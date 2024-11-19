@@ -1,1 +1,12 @@
 <app-salutation></app-salutation>
+
+Utilisation des directives *ngFor et *ngIf
+
+<!-- app.component.html -->
+<h1>Liste des tâches</h1>
+<ul>
+<li *ngFor="let tâche of tâches">
+    {{ tâche.nom }}
+    <span *ngIf="tâche.terminée">(Terminée)</span>
+</li>
+</ul>
