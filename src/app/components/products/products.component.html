@@ -1,0 +1,17 @@
+<table>
+    <tr>
+        <th>Nom</th>
+        <th>Catégorie</th>
+        <th>Prix</th>
+        <th>Disponibilité</th>
+    </tr>
+    <tr *ngFor="let product of products">
+        <td>{{ product.name | capitalize }}</td>
+        <td>{{product.category}}</td>
+        <td>{{ product.price | currency:'EUR' }}</td>
+        <td>
+            <span *ngIf="product.inStock; else rupture">En stock</span>
+            <ng-template #rupture>Rupture de stock</ng-template>
+        </td>
+    </tr>
+</table>
