@@ -21,6 +21,7 @@ export class ProductListComponent {
     { name : "TJM portage", price : 499.99, isInStock : true, category : ECategory.service },
     { name : "Boutique en ligne", price : 70.00, isInStock : false, category : ECategory.service, info: 'trop bien' },
   ];
+
   
   constructor(private cartService: CartService) {}
   
@@ -28,7 +29,8 @@ export class ProductListComponent {
   
   onAddToCart(product: IProduct) {
     this.cartService.addProduct(product);
+
     console.log('Produit ajouté au panier : ', product);
-    // alert(`${product.name} a été ajouté au panier !`);
+    // alert(`${product.name} a été ajouté au panier`);
   }
 }

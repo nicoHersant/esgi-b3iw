@@ -2,5 +2,6 @@
     <h2>Détails du product : {{ product.name }}</h2>
     <p>Prix : {{ product.price | currency:'EUR' }}</p>
     <p>Description : {{ product.info }}</p>
-    <button (click)="onAddToCart()">Ajouter au panier</button>
+    <ng-content />
+    <button (click)="onAddToCart()" #cartButton>Ajouter au panier</button>
 </div>
