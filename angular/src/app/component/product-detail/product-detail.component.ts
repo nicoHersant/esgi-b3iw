@@ -12,7 +12,7 @@ import { CurrencyPipe, NgIf } from '@angular/common';
 export class ProductDetailComponent {
   @Input() product!: IProduct;
   @Output() addToCart = new EventEmitter<IProduct>();
-
+  
   onAddToCart = () => this.addToCart.emit(this.product);
   
 }

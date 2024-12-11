@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { SalutationComponent } from './component/salutation/salutation.component';
 import { ProductListComponent } from './component/product-list/product-list.component';
 import { CartComponent } from './component/cart/cart.component';
+import { NgbConfig } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -13,4 +14,7 @@ import { CartComponent } from './component/cart/cart.component';
 })
 export class AppComponent {
   title = 'Angular Eductive';
+  constructor(ngbConfig: NgbConfig) {
+    ngbConfig.animation = false;
+  }
 }

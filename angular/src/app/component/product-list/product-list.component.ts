@@ -4,11 +4,12 @@ import { IProduct, ECategory } from '../../interface/product.interface';
 import { StatusPipe } from '../../shared/pipes/status.pipe';
 import { CartService } from '../../service/cart.service';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-product',
+  selector: 'app-product-list',
   standalone: true,
-  imports: [NgFor, NgIf, StatusPipe, CurrencyPipe, ProductDetailComponent],
+  imports: [NgFor, NgIf, StatusPipe, CurrencyPipe, ProductDetailComponent, NgbCollapseModule],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'
 })
