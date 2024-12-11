@@ -3,6 +3,7 @@ export interface IProduct {
     price : number;
     isInStock : boolean;
     category : ECategory;
+    info?: string;
   }
   
   export enum ECategory {

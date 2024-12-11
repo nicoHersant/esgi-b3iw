@@ -7,7 +7,7 @@
         <th>Dispo (pipe)</th>
         <th></th>
     </tr>
-    <tr *ngFor="let product of products">
+    <tr *ngFor="let product of products" highlight>
         <td>{{ product.name }}</td>
         <!-- <td>{{ product.price | currency:'EUR' }}</td> -->
         <td>{{ product.price }}</td>
@@ -16,6 +16,14 @@
             <ng-template #rupture>Rupture</ng-template>
         </td>
         <td><span>{{ product.isInStock| status }}</span></td>
-
+        <td>
+            <button (click)="selectProduct(product)">Voir détails</button>
+        </td>
     </tr>
-    </table>
+</table>
+
+<app-product-detail 
+  *ngIf="selected" 
+  [product]="selected" 
+  (addToCart)="onAddToCart($event)">
+</app-product-detail>
