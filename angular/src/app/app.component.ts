@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SalutationComponent } from './component/salutation/salutation.component';
-import { ProductListComponent } from './product-list/product-list.component';
+import { ProductListComponent } from './component/product-list/product-list.component';
+import { CartComponent } from './component/cart/cart.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, SalutationComponent, ProductListComponent],
+  imports: [RouterOutlet, SalutationComponent, ProductListComponent, CartComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'angularb3';
+  title = 'Angular Eductive';
 }

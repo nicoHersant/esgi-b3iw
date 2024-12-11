@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { NgFor, NgIf } from '@angular/common';
-import { IProduct, ECategory } from '../interface/product.interface';
-import { StatusPipe } from '../shared/pipes/status.pipe';
-import { CartService } from '../service/cart.service';
+import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
+import { IProduct, ECategory } from '../../interface/product.interface';
+import { StatusPipe } from '../../shared/pipes/status.pipe';
+import { CartService } from '../../service/cart.service';
 import { ProductDetailComponent } from '../product-detail/product-detail.component';
 
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [NgFor, NgIf, StatusPipe, ProductDetailComponent],
+  imports: [NgFor, NgIf, StatusPipe, CurrencyPipe, ProductDetailComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'
 })
