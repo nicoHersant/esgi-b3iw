@@ -12,7 +12,6 @@
     <tbody>
         <tr *ngFor="let product of products" highlight>
             <td scope="row">{{ product.name }}</td>
-            <!-- <td>{{ product.price | currency:'EUR' }}</td> -->
             <td scope="row">{{ product.price | currency:'EUR' }}</td>
             <td scope="row">
                 <span *ngIf="product.isInStock; else rupture">En stock</span>
