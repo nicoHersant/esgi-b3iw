@@ -1,0 +1,10 @@
+<div *ngIf="product">
+  <h2>{{ product.name }}</h2>
+  <p>{{ product.price | currency:'EUR' }}</p>
+  <p>{{ product.description }}</p>
+  <button *ngIf="product.isInStock; else outOfStock" (click)="onAddToCart()">Ajouter au panier</button>
+  <ng-template #outOfStock>
+    <button disabled>Rupture de stock</button>
+  </ng-template>
+  <ng-content />
+</div>

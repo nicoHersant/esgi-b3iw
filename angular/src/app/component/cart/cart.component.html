@@ -1,0 +1,13 @@
+<div *ngIf="products.length > 0">
+  <h2>Panier</h2>
+  <ul>
+    <li *ngFor="let product of products">
+      {{ product.name }} - {{ product.price | currency:'EUR' }}
+      <button (click)="removeFromCart(product)">Supprimer</button>
+    </li>
+  </ul>
+  <p>Total : {{ total | currency:'EUR' }}</p>
+</div>
+<div *ngIf="products.length === 0">
+  <p>Votre panier est vide.</p>
+</div>
