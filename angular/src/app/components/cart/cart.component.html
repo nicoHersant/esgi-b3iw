@@ -1,0 +1,10 @@
+<div *ngIf="cart.length === 0">
+    <p>Votre panier est vide.</p>
+</div>
+<div *ngIf="cart.length > 0">
+    <ul>
+        <li *ngFor="let cart of cart">
+            {{ cart.name }}
+        </li>
+    </ul>
+</div>

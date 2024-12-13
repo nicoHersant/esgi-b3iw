@@ -15,7 +15,14 @@
             <span *ngIf="product.isInStock; else rupture">En stock</span>
             <ng-template #rupture>Rupture</ng-template>
         </td>
-        <td><span>{{ product.isInStock| status }}</span></td>
-
+        <td><span>{{ product.isInStock | status }}</span></td>
+        <td><button class="action-button" (click)="checkDetail(product)">Voir Detail</button></td>
+        
     </tr>
     </table>
+    <app-product-datail 
+        *ngIf="selectedProduct" 
+        [selectedProduct]="selectedProduct">
+        (addToCart)="addToCart($event)"
+
+    </app-product-datail>
