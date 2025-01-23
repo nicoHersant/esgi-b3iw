@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../services/cart.service';
 import { IProduct } from '../../interface/product.interface';
@@ -10,20 +10,12 @@ import { IProduct } from '../../interface/product.interface';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.scss']
 })
-export class CartComponent implements OnInit {
+export class CartComponent {
   cartService = inject(CartService);
-  products: IProduct[] = [];
-
-  ngOnInit(): void {
-    this.products = this.cartService.getItems();
-  }
-
-  get total(): number {
-    return this.cartService.getTotal();
-  }
+  products = computed(() => this.cartService.getItems());
+  total = this.cartService.getTotal();
 
   removeFromCart(product: IProduct) {
     this.cartService.removeFromCart(product);
-    this.products = this.cartService.getItems(); 
   }
 }
