@@ -1,4 +1,4 @@
-import { Component, computed, Inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { IProduct, ECategory } from '../../interface/product.interface';
 import { StatusPipe } from '../../shared/pipes/status.pipe';
@@ -14,9 +14,14 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './product-list.component.scss'
 })
 export class ProductListComponent {
-  cartService = Inject(CartService);
+  cartService = inject(CartService);
   selected: IProduct | undefined;
-  products = computed(() => this.cartService.cart())
+  products = [    
+    { name : "Formation", price : 70, isInStock : true, category : ECategory.service, info: 'tout niveaux' },
+    { name : "Site vitrine", price : 1500, isInStock : true, category : ECategory.service, info: 'pas cher' },
+    { name : "TJM portage", price : 499.99, isInStock : true, category : ECategory.service },
+    { name : "Boutique en ligne", price : 70.00, isInStock : false, category : ECategory.service, info: 'trop bien' }
+  ];
   
   selectProduct = (product: IProduct) => this.selected = product;
   onAddToCart = (product: IProduct) => this.cartService.addProduct(product);

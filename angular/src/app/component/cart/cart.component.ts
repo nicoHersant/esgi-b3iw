@@ -1,4 +1,4 @@
-import { Component, computed, inject, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, computed, effect, inject, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { CartService } from '../../service/cart.service';
 import { IProduct } from '../../interface/product.interface';
 import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
@@ -15,5 +15,10 @@ export class CartComponent {
   products = computed(() => this.cartService.cart());
   total = computed(() => this.cartService.total());
   removeProduct = (product: IProduct) => this.cartService.removeProduct(product);
-
+  
+  constructor() {
+    effect(() => { 
+      console.log(`The total is: ${this.total()} from computed data`);    
+    });  
+  }
 }
