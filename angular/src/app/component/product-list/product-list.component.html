@@ -1,0 +1,33 @@
+<!-- produit-liste.component.html -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col" sortable="name" >Nom</th>
+            <th scope="col" >Prix</th>
+            <th scope="col" >Dispo (directive)</th>
+            <th scope="col" >Dispo (pipe)</th>
+            <th scope="col" ></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of products" highlight>
+            <td scope="row">{{ product.name }}</td>
+            <td scope="row">{{ product.price | currency:'EUR' }}</td>
+            <td scope="row">
+                <span *ngIf="product.isInStock; else rupture">En stock</span>
+                <ng-template #rupture>Rupture</ng-template>
+            </td>
+            <td scope="row"><span>{{ product.isInStock| status }}</span></td>
+            <td *ngIf="product.isInStock" scope="row">
+                <button (click)="selectProduct(product)">Voir détails</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<app-product-detail 
+    *ngIf="selected" 
+    [product]="selected" 
+    (addToCart)="onAddToCart($event)">
+    <img src="/assets/fry.jpg" alt="fry from futurama">
+</app-product-detail>
