@@ -10,7 +10,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let product of products" highlight>
+        <tr *ngFor="let product of products()" highlight>
             <td scope="row">{{ product.name }}</td>
             <td scope="row">{{ product.price | currency:'EUR' }}</td>
             <td scope="row">
@@ -28,6 +28,6 @@
 <app-product-detail 
     *ngIf="selected" 
     [product]="selected" 
-    (addToCart)="onAddToCart($event)">
+    >
     <img src="/assets/fry.jpg" alt="fry from futurama">
 </app-product-detail>

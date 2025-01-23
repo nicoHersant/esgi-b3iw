@@ -1,16 +1,25 @@
-import { Injectable } from '@angular/core';
-import { IProduct } from '../interface/product.interface';
+import { Injectable, signal, WritableSignal } from '@angular/core';
+import { ECategory, IProduct } from '../interface/product.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private cart: IProduct[] = [];
+  cart : WritableSignal<IProduct[]> = signal([
+    { name : "Formation", price : 70, isInStock : true, category : ECategory.service, info: 'tout niveaux' },
+    { name : "Site vitrine", price : 1500, isInStock : true, category : ECategory.service, info: 'pas cher' },
+    { name : "TJM portage", price : 499.99, isInStock : true, category : ECategory.service },
+    { name : "Boutique en ligne", price : 70.00, isInStock : false, category : ECategory.service, info: 'trop bien' },
+  ]);
+  total = signal(0);
 
-  getProducts = (): IProduct[] => this.cart;
-  addProduct = (produit: IProduct) => this.cart.push(produit);
-  removeProduct = (produit: IProduct) => this.cart.splice(this.cart.indexOf(produit), 1);
-
-  getTotal = (): number =>this.cart.reduce((acc, product) => acc + product.price, 0);
-  
+  getProducts = (): IProduct[] => this.cart();
+  addProduct = (product: IProduct) => {
+    this.cart.update(oldCart => [...oldCart, product]);
+    this.total.update(oldTotal => oldTotal + product.price)
+  }
+  removeProduct = (product: IProduct) => {
+    this.cart.update(oldCart => oldCart.splice(oldCart.indexOf(product), 1));
+    this.total.update(oldTotal => oldTotal - product.price)
+  }
 }

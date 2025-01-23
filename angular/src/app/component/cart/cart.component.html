@@ -1,9 +1,9 @@
 <!-- panier.component.html -->
 <h2 class="font-bold">Mon Panier</h2>
 <ul>
-  <li *ngFor="let product of products">
+  <li *ngFor="let product of products()">
     {{ product.name }} - {{ product.price | currency:'EUR' }} - <button (click)="removeProduct(product)">Supprimer</button>
   </li>
 </ul>
-<p *ngIf="products.length === 0">Votre panier est vide.</p>
-<p *ngIf="products.length > 0">Total : {{ total | currency:'EUR' }}</p>
+<p *ngIf="products().length === 0">Votre panier est vide.</p>
+<p *ngIf="products().length > 0">Total : {{ total() | currency:'EUR' }}</p>
